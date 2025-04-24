@@ -6,7 +6,7 @@ bundle install
 # bundle exec rake assets:precompile
 # bundle exec rake assets:clean
 
-npm i --prefix client && npm run build --prefix client
+npm i --prefix client && npm run build --prefix client && npm run start --prefix client
 
 # cp -a client/out/. public/
 
