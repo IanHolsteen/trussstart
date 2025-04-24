@@ -17,11 +17,11 @@ export default function SwipeableProfiles({ profiles }) {
 
   const current = profiles[currentIndex]
 
-  const API_BASE_URL = 'http://localhost:3000'
+  // const API_BASE_URL = 'http://localhost:3000'
   if (!current) return <div className="text-center mt-20">No more profiles 💤</div>
 
-  const photoUrl = `${API_BASE_URL}${current.photo_url}`
-  const coverUrl = `${API_BASE_URL}${current.cover_photo_url}`
+  const photoUrl = `/api/${current.photo_url}`
+  const coverUrl = `/api/${current.cover_photo_url}`
 
   return (
     <div className="flex flex-col items-center justify-between p-6">

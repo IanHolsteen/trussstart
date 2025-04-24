@@ -2,8 +2,7 @@ import Image from 'next/image'
 
 export default function DesignerCard({ designer }) {
 
-    const API_BASE_URL = 'http://localhost:3000';
-    const fullImageUrl = `${API_BASE_URL}${designer.photo_url}`;
+    const fullImageUrl = `/api/${designer.photo_url}`;
     
     return (
         <div className="bg-white rounded-2xl shadow-md p-4 w-full max-w-md mx-auto mb-6">
