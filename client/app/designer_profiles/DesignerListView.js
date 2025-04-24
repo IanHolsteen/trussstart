@@ -1,6 +1,6 @@
 'use client'
 
-import DesignerCard from './designerCard'
+import DesignerCard from "./DesignerCard"
 
 export default function DesignerListView({ designers }) {
   return (
