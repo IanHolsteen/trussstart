@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  # namespace :api do
+  namespace :api do
   #   resources :conversations, only: [:index, :create] do
   #     resources :messages, only: [:index, :create]
   #   end
@@ -30,5 +30,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+  end
   mount Rails.application.routes => "/rails/active_storage"
+  get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
+
 end
