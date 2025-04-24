@@ -2,8 +2,8 @@
 
 one:
   user: one
-  role: one
+  role_name: MyString
 
 two:
   user: two
-  role: two
+  role_name: MyString

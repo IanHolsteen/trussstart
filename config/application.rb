@@ -15,6 +15,7 @@ module TrussStart
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
     # Common ones are `templates`, `generators`, or `middleware`, for example.
     config.autoload_lib(ignore: %w(assets tasks))
+    # config.middleware.use OmniAuth::RailsCsrfProtection
 
     # Configuration for the application, engines, and railties goes here.
     #
@@ -23,5 +24,8 @@ module TrussStart
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    config.middleware.use ActionDispatch::Cookies
+    config.middleware.use ActionDispatch::Session::CookieStore, key: "_your_app_session"
+    config.action_controller.forgery_protection_origin_check = false
   end
 end

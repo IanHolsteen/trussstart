@@ -1,7 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  user: one
+  designer_profile: one
+  business_profile: one
+  seeker_profile: one
 
 two:
-  user: two
+  designer_profile: two
+  business_profile: two
+  seeker_profile: two
