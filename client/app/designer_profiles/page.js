@@ -1,12 +1,12 @@
 'use client'
 
 import { Suspense } from 'react'
-import DesignerProfilePageClient from './DesignerProfilePageClient'
+import DesignerProfilePage from './DesignerProfilePage'
 
 export default function Page() {
   return (
     <Suspense fallback={<div className="p-8 text-center">Loading...</div>}>
-      <DesignerProfilePageClient />
+      <DesignerProfilePage />
     </Suspense>
   )
 }
