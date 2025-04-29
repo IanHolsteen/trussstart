@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'fallback/index'
 
   namespace :api do
   #   resources :conversations, only: [:index, :create] do
