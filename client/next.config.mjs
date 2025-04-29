@@ -1,4 +1,4 @@
-require('dotenv').config(); // Add this to load .env.production during build
+import 'dotenv/config'
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {

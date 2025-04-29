@@ -3,5 +3,5 @@ class Portfolio < ApplicationRecord
   belongs_to :business_profile, optional: true
   belongs_to :seeker_profile, optional: true
 
-  has_many :projects
+  has_many :projects, dependent: :destroy
 end
