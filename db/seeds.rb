@@ -1,15 +1,16 @@
 require 'faker'
 
-# Clear existing data
-User.destroy_all
+puts "Clearing existing data..."
+
+Review.destroy_all
+Connection.destroy_all
+# Photo.destroy_all
+Project.destroy_all
+Portfolio.destroy_all
 DesignerProfile.destroy_all
 BusinessProfile.destroy_all
 SeekerProfile.destroy_all
-Portfolio.destroy_all
-Project.destroy_all
-# Photo.destroy_all
-Connection.destroy_all
-Review.destroy_all
+User.destroy_all
 
 puts "Seeding data..."
 
