@@ -2,14 +2,28 @@
 # exit on error
 set -o errexit
 
+# Install Ruby gems
 bundle install
-# bundle exec rake assets:precompile
-# bundle exec rake assets:clean
 
-npm i --prefix client && npm run build --prefix client && npm run start --prefix client
+# Install NPM dependencies for the frontend
+npm install --prefix client
 
-# cp -a client/out/. public/
+# Build the Next.js app
+npm run build --prefix client
 
+# Copy the built files from Next.js to Rails public folder
+cp -a client/out/. public/
 
+# Run Rails migrations
 bundle exec rake db:migrate
+
+# Optionally, seed the database
 bundle exec rake db:seed
+
+# Optionally, precompile assets if needed
+bundle exec rake assets:precompile
+
+# Optionally, clean assets if needed
+bundle exec rake assets:clean
+
+echo "Deployment complete!"
