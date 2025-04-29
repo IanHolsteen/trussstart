@@ -1,24 +1,20 @@
-import 'dotenv/config';
-const isDev = process.env.NODE_ENV !== 'production';
-
 const nextConfig = {
+  output: 'export',
   reactStrictMode: true,
   devIndicators: false,
   async rewrites() {
     return [
       {
         source: "/api/:path*",
-        destination: isDev
-          ? "http://localhost:3000/:path*"
-          : "https://trussstart.onrender.com/:path*",
+        destination: "http://localhost:3000/:path*", // for local dev only
       },
     ];
   },
   images: {
     remotePatterns: [
       {
-        protocol: isDev ? 'http' : 'https',
-        hostname: isDev ? 'localhost' : 'trussstart.onrender.com',
+        protocol: 'https',
+        hostname: 'trussstart.onrender.com',
         pathname: '/rails/active_storage/**',
       },
     ],
