@@ -1,4 +1,5 @@
 import 'dotenv/config';
+const isDev = process.env.NODE_ENV !== 'production';
 
 const nextConfig = {
   reactStrictMode: true,
@@ -7,15 +8,17 @@ const nextConfig = {
     return [
       {
         source: "/api/:path*",
-        destination: `${process.env.NEXT_PUBLIC_API_BASE_URL}/:path*`,
+        destination: isDev
+          ? "http://localhost:3000/:path*"
+          : "https://trussstart.onrender.com/:path*",
       },
     ];
   },
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: process.env.NEXT_PUBLIC_IMAGE_HOST,
+        protocol: isDev ? 'http' : 'https',
+        hostname: isDev ? 'localhost' : 'trussstart.onrender.com',
         pathname: '/rails/active_storage/**',
       },
     ],
