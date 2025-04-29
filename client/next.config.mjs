@@ -1,11 +1,14 @@
+require('dotenv').config(); // Add this to load .env.production during build
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  reactStrictMode: true,
   devIndicators: false,
   async rewrites() {
     return [
       {
         source: "/api/:path*",
-        destination: `${process.env.NEXT_PUBLIC_API_BASE_URL}/:path*`,
+        destination: `${process.env.NEXT_PUBLIC_API_BASE_URL || 'https://trussstart.onrender.com'}/:path*`,
       },
     ];
   },
@@ -13,11 +16,12 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: process.env.NEXT_PUBLIC_IMAGE_HOST, // optional, or hardcode it
+        hostname: process.env.NEXT_PUBLIC_IMAGE_HOST || 'trussstart.onrender.com',
         pathname: '/rails/active_storage/**',
       },
     ],
+    unoptimized: true,
   },
 };
 
-export default nextConfig;
+module.exports = nextConfig;
