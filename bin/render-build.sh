@@ -9,7 +9,7 @@ bundle install
 npm install --prefix client
 
 # Build the Next.js app
-npm run build-and-export --prefix client
+npm run build --prefix client
 
 # Copy the built files from Next.js to Rails public folder
 cp -a client/out/. public/
