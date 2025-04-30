@@ -10,6 +10,7 @@ Portfolio.destroy_all
 DesignerProfile.destroy_all
 BusinessProfile.destroy_all
 SeekerProfile.destroy_all
+Cart.destroy_all
 User.destroy_all
 
 puts "Seeding data..."
