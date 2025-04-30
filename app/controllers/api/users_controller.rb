@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class Api::UsersController < ApplicationController
     skip_before_action :guest, only: [:create, :show, :index, :update, :destroy]
     skip_before_action :authorize, only: [:create, :guest, :show, :index]
     before_action :find_user, only: [:update, :destroy]
