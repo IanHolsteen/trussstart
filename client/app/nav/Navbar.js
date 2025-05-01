@@ -15,10 +15,10 @@ export default function Navbar({ viewMode, setViewMode }) {
 
   return (
         <>
-          <nav className="flex justify-between items-center p-8">
+          <nav className="flex justify-between items-center pt-3 px-8">
             <div className="flex items-center space-x-1">
               <NavMenuButton setMenuOpen={setMenuOpen} />
-              <button onClick={() => router.push("/")} className={`text-4xl font-bold ${
+              <button onClick={() => router.push("/")} className={`text-3xl font-bold ${
                   theme === "light" ? "text-black" : "text-[#5FBB46]"
                 }`}>TRUSS</button>
               </div>

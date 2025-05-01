@@ -1,12 +1,13 @@
 import { useTheme } from "../contexts/ThemeProvider"
 
+
 export default function BottomNavigation() {
 
     const { theme } = useTheme();
 
   return (
-    <div className={`relative flex justify-center items-center p-6 mt-4 mb-14 `}>
-      <div className={`relative w-48 h-48 rounded-full flex justify-center items-center bg-gradient-to-b 
+    <div className={`relative flex justify-center items-center p-6 mt-2 mb-14 `}>
+      <div className={`relative w-42 h-42 rounded-full flex justify-center items-center bg-gradient-to-b 
         ${theme === "light" ? "from-[#E5E3CC] to-[#FAFAFA]" : "from-[#0A0A0A] to-[#5FBB46] from-[0%]"}`}>
         {/* Globe grid background using SVG */}
         <svg className="absolute w-full h-full" viewBox="0 0 100 100">
