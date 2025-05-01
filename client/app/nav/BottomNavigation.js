@@ -17,7 +17,7 @@ export default function BottomNavigation() {
             <ellipse cx="50" cy="50" rx="40" ry="50" fill="none" stroke="#E5E3CC" strokeWidth="0.5" />
             <ellipse cx="50" cy="50" rx="30" ry="50" fill="none" stroke="#E5E3CC" strokeWidth="0.5" />
             <ellipse cx="50" cy="50" rx="30" ry="50" fill="none" stroke="#E5E3CC" strokeWidth="0.5" />
-            <line x1="50" x2="50" y1="2" y2="98" stroke="#E5E3CC" strokeWidth="0.5" />
+            <line x1="50" x2="50" y1="0" y2="100" stroke="#E5E3CC" strokeWidth="0.5" />
             <ellipse cx="50" cy="50" rx="20" ry="50" fill="none" stroke="#E5E3CC" strokeWidth="0.5" />
             <ellipse cx="50" cy="50" rx="10" ry="50" fill="none" stroke="#E5E3CC" strokeWidth="0.5" />
 
