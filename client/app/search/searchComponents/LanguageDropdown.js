@@ -1,22 +1,22 @@
 import { useState, useRef, useEffect } from "react";
 
-const projectTypes = [
-  { label: "Residential", value: "residential" },
-  { label: "Commercial", value: "commercial" },
-  { label: "Industrial", value: "industrial" },
-  { label: "Digital", value: "land" },
+const languages = [
+  { label: "English", value: "English" },
+  { label: "Spanish", value: "Spanish" },
+  { label: "French", value: "French" },
+  { label: "Korean", value: "Korean" },
+  { label: "Chinese", value: "Chinese" },
 ];
 
-export default function CustomDropdown({ selectedOption, setSelectedOption }) {
+export default function LanguageDropdown({ selectedLanguage, setSelectedLanguage }) {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef(null);
 
   const handleSelect = (value) => {
-    setSelectedOption(value);
+    setSelectedLanguage(value);
     setOpen(false);
   };
 
-  // Close on outside click
   useEffect(() => {
     function handleClickOutside(event) {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -32,9 +32,9 @@ export default function CustomDropdown({ selectedOption, setSelectedOption }) {
     <div className="relative" ref={dropdownRef}>
       <button
         onClick={() => setOpen(!open)}
-        className="flex items-center justify-between w-36 px-4 py-1 text-l focus:outline-none"
+        className="flex items-center justify-between w-24 px-2 py-2 text-l focus:outline-none"
       >
-        {projectTypes.find(opt => opt.value === selectedOption)?.label || "Select Type"}
+        {languages.find(c => c.value === selectedLanguage)?.label || "english"}
         <svg
           className="w-2.5 h-2.5 opacity-60 ml-2"
           aria-hidden="true"
@@ -53,15 +53,15 @@ export default function CustomDropdown({ selectedOption, setSelectedOption }) {
       </button>
 
       {open && (
-        <div className="absolute z-10 mt-2 w-36 bg-gradient-to-b from-[#FAFAFA] to-[#E5E3CC] border-1">
+        <div className="absolute z-10 w-24 bg-gradient-to-b from-[#FAFAFA] to-[#E5E3CC] border-1">
           <ul className="py-1 text-l">
-            {projectTypes.map((type) => (
-              <li key={type.value}>
+            {languages.map((language) => (
+              <li key={language.value}>
                 <button
-                  onClick={() => handleSelect(type.value)}
-                  className="w-full text-left px-4 py-2 "
+                  onClick={() => handleSelect(language.value)}
+                  className="w-full text-left px-4 py-2"
                 >
-                  {type.label}
+                  {language.label}
                 </button>
               </li>
             ))}

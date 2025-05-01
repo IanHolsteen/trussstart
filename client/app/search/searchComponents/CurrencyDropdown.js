@@ -1,22 +1,22 @@
 import { useState, useRef, useEffect } from "react";
 
-const projectTypes = [
-  { label: "Residential", value: "residential" },
-  { label: "Commercial", value: "commercial" },
-  { label: "Industrial", value: "industrial" },
-  { label: "Digital", value: "land" },
+const currencies = [
+  { label: "$", value: "USA" },
+  { label: "₹", value: "INDIA" },
+  { label: "€", value: "EURO" },
+  { label: "¥", value: "YEN" },
+  { label: "₩", value: "SOUTH KOREA" },
 ];
 
-export default function CustomDropdown({ selectedOption, setSelectedOption }) {
+export default function CurrencyDropdown({ selectedCurrency, setSelectedCurrency }) {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef(null);
 
   const handleSelect = (value) => {
-    setSelectedOption(value);
+    setSelectedCurrency(value);
     setOpen(false);
   };
 
-  // Close on outside click
   useEffect(() => {
     function handleClickOutside(event) {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -32,9 +32,9 @@ export default function CustomDropdown({ selectedOption, setSelectedOption }) {
     <div className="relative" ref={dropdownRef}>
       <button
         onClick={() => setOpen(!open)}
-        className="flex items-center justify-between w-36 px-4 py-1 text-l focus:outline-none"
+        className="flex items-center justify-between w-12 px-2 py-1 text-l focus:outline-none"
       >
-        {projectTypes.find(opt => opt.value === selectedOption)?.label || "Select Type"}
+        {currencies.find(c => c.value === selectedCurrency)?.label || "$"}
         <svg
           className="w-2.5 h-2.5 opacity-60 ml-2"
           aria-hidden="true"
@@ -53,15 +53,15 @@ export default function CustomDropdown({ selectedOption, setSelectedOption }) {
       </button>
 
       {open && (
-        <div className="absolute z-10 mt-2 w-36 bg-gradient-to-b from-[#FAFAFA] to-[#E5E3CC] border-1">
+        <div className="absolute z-10 mt-2 w-16 bg-gradient-to-b from-[#FAFAFA] to-[#E5E3CC] border-1">
           <ul className="py-1 text-l">
-            {projectTypes.map((type) => (
-              <li key={type.value}>
+            {currencies.map((currency) => (
+              <li key={currency.value}>
                 <button
-                  onClick={() => handleSelect(type.value)}
-                  className="w-full text-left px-4 py-2 "
+                  onClick={() => handleSelect(currency.value)}
+                  className="w-full text-left px-4 py-2"
                 >
-                  {type.label}
+                  {currency.label}
                 </button>
               </li>
             ))}
