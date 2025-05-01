@@ -13,7 +13,7 @@ const LoginPage = () => {
 
   // Fetch CSRF Token on Component Mount
   useEffect(() => {
-    fetch("https://trussstart.onrender.com/csrf_token", {
+    fetch("https://trussstart.onrender.com/api/csrf_token", {
       method: "GET",
       credentials: "include", // Ensures session cookies are sent
     })
