@@ -8,6 +8,30 @@ body {
   font-family: var(--font-poppins);
 }
 
+.hexagon-wrapper {
+  width: 1.25rem;
+  height: 1.25rem;
+  transform: rotate(30deg); /* Rotates hexagon corners to top/bottom */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hexagon {
+  clip-path: polygon(
+    50% 0%, 93% 25%, 
+    93% 75%, 50% 100%, 
+    7% 75%, 7% 25%
+  );
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(-30deg); /* Counter-rotate to keep ✓ upright */
+}
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

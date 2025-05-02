@@ -7,13 +7,41 @@ Connection.destroy_all
 # Photo.destroy_all
 Project.destroy_all
 Portfolio.destroy_all
+DesignerProfileSpecialty.destroy_all
+Specialty.destroy_all
 DesignerProfile.destroy_all
 BusinessProfile.destroy_all
 SeekerProfile.destroy_all
 Cart.destroy_all
+
 User.destroy_all
 
 puts "Seeding data..."
+
+specialties = [
+  "mid century",
+  "modern",
+  "built in",
+  "custom furniture",
+  "sustainability",
+  "historical homes",
+  "restoration",
+  "wood",
+  "steel",
+  "craftsman",
+  "stone",
+  "brick",
+  "masonry",
+  "eco friendly",
+  "green buildings"
+]
+
+# Add the specialties to the database
+specialties.each do |specialty_name|
+  Specialty.find_or_create_by(name: specialty_name)
+end
+
+puts "Specialties have been seeded."
 
 # Create Users
 
@@ -26,14 +54,21 @@ testUser = User.create!(
 user1 = User.create!(
   name: "Maria Lopez",
   email: "maria@test.com",
-  password: "password"
+  password: "maria"
 )
 
 user2 = User.create!(
   name: "Michael Rios",
   email: "michael@test.com",
-  password: "password"
+  password: "michael"
 )
+
+user2 = User.create!(
+  name: "James Jameson",
+  email: "james@test.com",
+  password: "james"
+)
+
 
 # Create Designer Profile
 
@@ -70,12 +105,17 @@ designer1.cover_photo.attach(
 
 puts "Attached designer1 images"
 
+designer1.specialties << Specialty.find_by(name: "mid century")
+designer1.specialties << Specialty.find_by(name: "restoration")
+designer1.specialties << Specialty.find_by(name: "historical homes")
+designer1.save!
+
 designer2 = DesignerProfile.create!(
   user: user2,
   name: user2.name,
   location: "New York",
-  language: "English",
-  bio: '',
+  language: "English, Spanish",
+  bio: 'Hello! Licensed architect based out of Los Angeles with over 5 years of experience. Reach out about fireproofing your home!',
   price_range: 3,
   lgbtq_owned: false,
   minority_owned: false,
@@ -101,15 +141,20 @@ designer2.cover_photo.attach(
 
 puts "Attached designer2 images"
 
+designer2.specialties << Specialty.find_by(name: "modern")
+designer2.specialties << Specialty.find_by(name: "custom furniture")
+designer2.specialties << Specialty.find_by(name: "eco friendly")
+designer2.save!
+
 designer3 = DesignerProfile.create!(
-  user: testUser,
-  name: user2.name,
-  location: "New York",
+  user: user3,
+  name: user3.name,
+  location: "Jamestown",
   language: "English",
-  bio: '',
-  price_range: 2,
+  bio: 'Hello! James here, I love jamming while drinking jameson. By far my favorite topping for toast is jam!',
+  price_range: 5,
   lgbtq_owned: false,
-  minority_owned: true,
+  minority_owned: false,
   fluent_in_spanish: false
 )
 
@@ -126,6 +171,12 @@ designer3.cover_photo.attach(
 )
 
 puts "Attached designer3 images"
+
+designer3.specialties << Specialty.find_by(name: "sustainability")
+designer3.specialties << Specialty.find_by(name: "green buildings")
+designer3.specialties << Specialty.find_by(name: "wood")
+designer3.save!
+
 
 
 # Create Business Profile

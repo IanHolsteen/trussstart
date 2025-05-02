@@ -1,5 +1,9 @@
 class DesignerProfileSerializer < ActiveModel::Serializer
-  attributes :id, :name, :location, :language, :bio, :photo_url, :cover_photo_url, :price_range, :lgbtq_owned, :minority_owned, :fluent_in_spanish
+  attributes :id, :name, :location, :language, :bio, :photo_url, :cover_photo_url, :price_range, :lgbtq_owned, :minority_owned, :fluent_in_spanish, :specialties
+
+  def specialties
+    object.specialties.pluck(:name)
+  end
 
   def photo_url
     return unless object.photo.attached?

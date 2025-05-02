@@ -6,6 +6,8 @@ class DesignerProfile < ApplicationRecord
   has_many :reviews
   has_one_attached :photo
   has_one_attached :cover_photo
+  has_many :designer_profile_specialties
+  has_many :specialties, through: :designer_profile_specialties
 
   validates :price_range, inclusion: { in: 1..5 }, allow_nil: true
 

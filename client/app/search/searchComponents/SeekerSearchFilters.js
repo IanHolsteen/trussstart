@@ -7,11 +7,14 @@ import CurrencyDropdown from "./CurrencyDropdown"
 import RangeSelector from "./RangeSelector";
 import PriceSlider from "./PriceSlider";
 import LanguageDropdown from "./LanguageDropdown";
+import ResidentialOption from "../searchComponents/ResidentialOption";
+import CommercialOption from '../searchComponents/CommercialOption';
+import IndustrialOption from '../searchComponents/IndustrialOption';
+import DigitalOption from "../searchComponents/DigitalOption"
 
 export default function SearchFilters () {
 
   const { theme } = useTheme();
-  const [showResidential, setShowResidential] = useState(true);
   const [isAnimating, setIsAnimating] = useState(false);
 
   const router = useRouter();
@@ -33,15 +36,18 @@ export default function SearchFilters () {
     router.push(`/designer_profiles?${params.toString()}`);
   }
 
+  const optionComponents = {
+    residential: <ResidentialOption />,
+    commercial: <CommercialOption />,
+    industrial: <IndustrialOption />,
+    digital: <DigitalOption />,
+  };
+
 
   useEffect(() => {
-    if (selectedOption === "residential") {
-      setShowResidential(true);
-      setIsAnimating(true);
-    } else {
-      setIsAnimating(true);
-      setTimeout(() => setShowResidential(false), 800);
-    }
+    setIsAnimating(true);
+    const timeout = setTimeout(() => setIsAnimating(false), 800);
+    return () => clearTimeout(timeout);
   }, [selectedOption]);
 
   const handleLocationChange = (e) => {
@@ -96,88 +102,12 @@ export default function SearchFilters () {
 
         
           <div
-        className={`overflow-hidden transition-all duration-800 ease-in-out ${
-          selectedOption === "residential" ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
-        }`}
-        onTransitionEnd={() => setIsAnimating(false)} // Reset animation state
-      >
-        {showResidential && (
-          <div className={`p-2 grid grid-cols-2 gap-2 text-sm border-b transition-opacity duration-100`}>
-            <label className="flex items-center gap-2">
-              <span className="relative inline-block w-4 h-4">
-                <input
-                  type="checkbox"
-                  className="peer appearance-none w-4 h-4 border-1 border-black checked:bg-blue-700"
-                />
-                <span className="pointer-events-none absolute inset-0 flex items-center justify-center text-black text-xl peer-checked:opacity-100 opacity-0">
-                  ✔
-                </span>
-              </span>
-              Design & Build
-            </label>
-            <label className="flex items-center gap-2">
-              <span className="relative inline-block w-4 h-4">
-                <input
-                  type="checkbox"
-                  className="peer appearance-none w-4 h-4 border-1 border-black checked:bg-blue-700"
-                />
-                <span className="pointer-events-none absolute inset-0 flex items-center justify-center text-black text-xl peer-checked:opacity-100 opacity-0">
-                  ✔
-                </span>
-              </span>
-              Landscape
-            </label>
-            <label className="flex items-center gap-2">
-              <span className="relative inline-block w-4 h-4">
-                <input
-                  type="checkbox"
-                  className="peer appearance-none w-4 h-4 border-1 border-black checked:bg-blue-700"
-                />
-                <span className="pointer-events-none absolute inset-0 flex items-center justify-center text-black text-xl peer-checked:opacity-100 opacity-0">
-                  ✔
-                </span>
-              </span>
-              ADU
-            </label>
-            <label className="flex items-center gap-2">
-              <span className="relative inline-block w-4 h-4">
-                <input
-                  type="checkbox"
-                  className="peer appearance-none w-4 h-4 border-1 border-black checked:bg-blue-700"
-                />
-                <span className="pointer-events-none absolute inset-0 flex items-center justify-center text-black text-xl peer-checked:opacity-100 opacity-0">
-                  ✔
-                </span>
-              </span>
-              Restoration
-            </label>
-            <label className="flex items-center gap-2">
-              <span className="relative inline-block w-4 h-4">
-                <input
-                  type="checkbox"
-                  className="peer appearance-none w-4 h-4 border-1 border-black checked:bg-blue-700"
-                />
-                <span className="pointer-events-none absolute inset-0 flex items-center justify-center text-black text-xl peer-checked:opacity-100 opacity-0">
-                  ✔
-                </span>
-              </span>
-              Remodeling
-            </label>
-            <label className="flex items-center gap-2">
-              <span className="relative inline-block w-4 h-4">
-                <input
-                  type="checkbox"
-                  className="peer appearance-none w-4 h-4 border-1 border-black checked:bg-blue-700"
-                />
-                <span className="pointer-events-none absolute inset-0 flex items-center justify-center text-black text-xl peer-checked:opacity-100 opacity-0">
-                  ✔
-                </span>
-              </span>
-              Renovation
-            </label>
+            className={`overflow-hidden transition-all duration-800 ease-in-out ${
+              selectedOption ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
+            }`}
+          >
+            {optionComponents[selectedOption]}
           </div>
-        )}
-      </div>
       <div className=" flex items-center justify-center w-full">
         <div className="flex items-center gap-2 w-full max-w-md">
         <RangeSelector value={rangeValue} onChange={setRangeValue} />
