@@ -4,7 +4,7 @@ puts "Clearing existing data..."
 
 Review.destroy_all
 Connection.destroy_all
-Photo.destroy_all
+# Photo.destroy_all
 Project.destroy_all
 Portfolio.destroy_all
 DesignerProfileSpecialty.destroy_all
