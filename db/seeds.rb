@@ -4,7 +4,7 @@ puts "Clearing existing data..."
 
 Review.destroy_all
 Connection.destroy_all
-# Photo.destroy_all
+Photo.destroy_all
 Project.destroy_all
 Portfolio.destroy_all
 DesignerProfileSpecialty.destroy_all
@@ -63,7 +63,7 @@ user2 = User.create!(
   password: "michael"
 )
 
-user2 = User.create!(
+user3 = User.create!(
   name: "James Jameson",
   email: "james@test.com",
   password: "james"
@@ -153,8 +153,8 @@ testUser = User.create!(
 )
 
 designer3 = DesignerProfile.create!(
-  user: testUser,
-  name: testUser.name,
+  user: user3,
+  name: user3.name,
   location: "New York",
   language: "English",
   bio: 'hey there i am a great designman',

@@ -57,8 +57,8 @@ export default function SwipeableProfiles({ profiles: initialProfiles, onWidenSe
     )
   }
 
-  const photoUrl = `\${current.photo_url}`
-  const coverUrl = `\${current.cover_photo_url}`
+  const photoUrl = `${current.photo_url}`
+  const coverUrl = `${current.cover_photo_url}`
 
   
 
