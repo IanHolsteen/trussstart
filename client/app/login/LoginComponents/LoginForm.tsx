@@ -57,11 +57,6 @@ const LoginPage = () => {
 
   return (
     <div className="border p-8">
-      <h2 className="text-2xl font-bold mb-4 text-center">
-        {user?.email === "Guest"
-          ? "Hey there guestypoo, login why dontcha"
-          : user?.email}
-      </h2>
       <h2 className="text-2xl font-bold mb-4 text-center">Login</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <input

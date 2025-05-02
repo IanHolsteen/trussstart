@@ -8,7 +8,7 @@ export default function DarkToggleCircle ({ darkOpen, setDarkOpen }) {
     const { theme } = useTheme();
 
     return (
-        <div className="relative w-10 h-16 flex items-center justify-center overflow-visible">
+        <div className="relative w-10 h-16 pl-4 flex items-center justify-center overflow-visible">
             <button
               onClick={() => setDarkOpen(true)}
               className={`absolute flex items-center justify-center w-10 h-10 transition-all  ease-in-out ${
@@ -17,13 +17,13 @@ export default function DarkToggleCircle ({ darkOpen, setDarkOpen }) {
             >
               {/* Background */}
               <div
-                className={`absolute w-6 h-6 ${
+                className={`absolute w-4 h-4 ${
                   theme === "light" ? "bg-[#5FBB46]" : "bg-transparent"
                 } rounded-full transition-all duration-500 ease-in-out`}
               />
               {/* Circle Icon */}
               <Circle
-                className={`w-7 h-7 relative ${
+                className={`w-5 h-5 z-20 relative ${
                   theme === "light" ? "text-black" : "text-[#5FBB46]"
                 } transition-all duration-500 ease-in-out`}
               />

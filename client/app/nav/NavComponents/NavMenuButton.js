@@ -6,13 +6,13 @@ export default function NavMenuButton ({ setMenuOpen }) {
     
     return (
         <button
-            className="relative flex items-center justify-center w-12 h-12"
+            className="relative flex items-center justify-center w-8 h-8"
             onClick={() => setMenuOpen(true)}
             >
                 <div
-                  className={`absolute w-9 h-6 ${
+                  className={`absolute w-6 h-4 ${
                     theme === "light" ? "bg-red-500" : ""
-                  } rounded-xs`}
+                  } `}
                 />
             <Menu
                   className={`w-12 h-12 relative ${

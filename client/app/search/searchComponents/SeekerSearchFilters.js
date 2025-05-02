@@ -60,17 +60,17 @@ export default function SearchFilters () {
     return (
         <div className={`border m-4 text-black ${theme === "light" ? "text-black" : "text-green-700"}`}>
           <div className="flex items-center border-b p-1">
-            📍 :
+            📍 :&nbsp;
               <input 
                 type="text" 
-                className={`p-1 focus:outline-none focus:border-none ${theme === "light" ? "text-black" : "text-{#5FBB46}"}`}
+                className={` focus:outline-none focus:border-none ${theme === "light" ? "text-black" : "text-{#5FBB46}"}`}
                 placeholder="Location" 
                 value={location}
                 onChange={handleLocationChange}
               />
           </div>
-          <div className="flex items-center justify-between border-b h-[36px]">
-            <div className="flex-1 flex items-center justify-center border-r h-full gap-2">
+          <div className="flex items-center justify-between border-b h-[32px]">
+            <div className="flex-1 flex items-center justify-center border-r h-full ">
               🔎
               <CustomDropdown
                 selectedOption={selectedOption}
@@ -78,7 +78,7 @@ export default function SearchFilters () {
               />
             </div>
 
-            <div className="flex-1 flex items-center justify-center gap-2 h-full">
+            <div className="flex-1 flex items-center justify-center h-full">
               <CurrencyDropdown
                 selectedCurrency={selectedCurrency}
                 setSelectedCurrency={setSelectedCurrency}
@@ -89,7 +89,7 @@ export default function SearchFilters () {
                 type="number"
                 placeholder="Budget"
                 onChange={handleBudgetChange}
-                className="p-1 w-full max-w-[100px] focus:outline-none focus:border-none"
+                className="w-full max-w-[100px] focus:outline-none focus:border-none"
               />
             </div>
           </div>
@@ -102,7 +102,7 @@ export default function SearchFilters () {
         onTransitionEnd={() => setIsAnimating(false)} // Reset animation state
       >
         {showResidential && (
-          <div className={`p-3 grid grid-cols-2 gap-2 text-sm border-b transition-opacity duration-100`}>
+          <div className={`p-2 grid grid-cols-2 gap-2 text-sm border-b transition-opacity duration-100`}>
             <label className="flex items-center gap-2">
               <span className="relative inline-block w-4 h-4">
                 <input
@@ -178,7 +178,7 @@ export default function SearchFilters () {
           </div>
         )}
       </div>
-      <div className="p-1 flex items-center justify-center w-full">
+      <div className=" flex items-center justify-center w-full">
         <div className="flex items-center gap-2 w-full max-w-md">
         <RangeSelector value={rangeValue} onChange={setRangeValue} />
         </div>

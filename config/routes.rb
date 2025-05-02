@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   delete "/logout", to: "sessions#destroy"
   post "/login", to: "sessions#create"
   get "/csrf_token", to: "sessions#csrf_token"
+  post "/signup", to: "users#create"
 
   get '/auth/google_oauth2/callback', to: 'sessions#create'
   get '/auth/failure', to: 'sessions#failure'

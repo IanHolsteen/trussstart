@@ -35,7 +35,6 @@ class Api::UsersController < ApplicationController
             guest_user.carts.each do |cart|
                 cart.update!(user_id: user.id)
             end
-            guest_user.purchases.update_all(user_id: user.id)
             guest_user.destroy
         end
         session[:user_id] = user.id
@@ -60,6 +59,6 @@ class Api::UsersController < ApplicationController
     end
 
     def user_params
-        params.permit(:email, :password, :password_confirmation, :user)
+        params.permit(:name, :email, :password, :password_confirmation)
     end
 end
