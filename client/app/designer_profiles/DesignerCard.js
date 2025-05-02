@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 export default function DesignerCard({ designer }) {
 
-    const fullImageUrl = `trussstart.onrender.com/${designer.photo_url}`;
+    const fullImageUrl = `${designer.photo_url}`;
     
     return (
         <div className="bg-white rounded-2xl shadow-md p-4 w-full max-w-md mx-auto mb-6">
