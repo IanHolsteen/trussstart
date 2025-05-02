@@ -20,8 +20,8 @@ export default function SwipeableProfiles({ profiles }) {
   // const API_BASE_URL = 'http://localhost:3000'
   if (!current) return <div className="text-center mt-20">No more profiles 💤</div>
 
-  const photoUrl = `/${current.photo_url}`
-  const coverUrl = `/${current.cover_photo_url}`
+  const photoUrl = `trussstart.onrender.com/${current.photo_url}`
+  const coverUrl = `trussstart.onrender.com/${current.cover_photo_url}`
 
   return (
     <div className="flex flex-col items-center justify-between p-6">
