@@ -84,6 +84,14 @@ const LoginPage = () => {
           Login
         </button>
       </form>
+        <div className="pt-2">
+          <button
+              onClick={() => router.push("/login/CreateAccount")}
+              className="w-full border text-black p-2"
+            >
+            Create Account
+          </button>
+        </div>
       {errors.length > 0 && (
         <div className="mt-4 text-red-600">
           {errors.map((error, index) => (
