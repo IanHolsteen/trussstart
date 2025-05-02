@@ -146,17 +146,24 @@ designer2.specialties << Specialty.find_by(name: "custom furniture")
 designer2.specialties << Specialty.find_by(name: "eco friendly")
 designer2.save!
 
+testUser = User.create!(
+  name: "Test User",
+  email: "testuser@test.com",
+  password: "password"
+)
+
 designer3 = DesignerProfile.create!(
-  user: user3,
-  name: user3.name,
-  location: "Jamestown",
+  user: testUser,
+  name: testUser.name,
+  location: "New York",
   language: "English",
-  bio: 'Hello! James here, I love jamming while drinking jameson. By far my favorite topping for toast is jam!',
-  price_range: 5,
+  bio: 'hey there i am a great designman',
+  price_range: 2,
   lgbtq_owned: false,
-  minority_owned: false,
+  minority_owned: true,
   fluent_in_spanish: false
 )
+
 
 designer3.photo.attach(
   io: File.open(photo_path),
