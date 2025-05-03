@@ -62,9 +62,10 @@ export default function SearchFilters () {
     setBudget(e.target.value);
   };
 
-  
+  const color = "#5FBB46";
+
     return (
-        <div className={`border m-4 text-black ${theme === "light" ? "text-black" : "text-green-700"}`}>
+        <div className={`border m-4 ${theme === "light" ? "text-black" : `text-[${color}]`}`}>
           <div className="flex items-center border-b p-1">
             📍 :&nbsp;
               <input 

@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import React, { useEffect, useState, useContext } from "react";
 import CartContext from "../../contexts/CartContext";
 import { useUser } from "../../contexts/UserProvider";
+import { useTheme } from "../../contexts/ThemeProvider"
 
 const CreateAccountPage = () => {
   const router = useRouter();
@@ -18,6 +19,7 @@ const CreateAccountPage = () => {
   });
   const [errors, setErrors] = useState<string[]>([]);
   const [csrfToken, setCsrfToken] = useState("");
+  const { theme } = useTheme();
 
   useEffect(() => {
     fetch("https://www.trussmade.com/api/csrf_token", {
@@ -71,7 +73,7 @@ const CreateAccountPage = () => {
   };
 
   return (
-    <div className="border p-8">
+    <div className={`border p-8 ${theme === 'light' ? "text-black" : "text-[#5FBB46]"}`}>
       <h2 className="text-2xl font-bold mb-4 text-center">Create Account</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <input
@@ -123,7 +125,7 @@ const CreateAccountPage = () => {
           </span>
         </label>
 
-        <button type="submit" className="w-full border text-black p-2">
+        <button type="submit" className="w-full border  p-2">
           Create Account
         </button>
         <p className="text-center mt-2">

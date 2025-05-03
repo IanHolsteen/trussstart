@@ -2,6 +2,7 @@ import { useRouter } from "next/navigation";
 import React, { useState, useEffect, useContext } from "react";
 import CartContext from "../../contexts/CartContext";
 import { useUser } from "../../contexts/UserProvider";
+import { useTheme } from "../../contexts/ThemeProvider"
 
 const LoginPage = () => {
   const router = useRouter();
@@ -10,6 +11,7 @@ const LoginPage = () => {
   const [form, setForm] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState([]);
   const [csrfToken, setCsrfToken] = useState("");
+  const { theme } = useTheme();
 
   // Fetch CSRF Token on Component Mount
   useEffect(() => {
@@ -56,7 +58,7 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="border p-8">
+    <div className={`border p-8 ${theme === 'light' ? "text-black" : "text-[#5FBB46]"}`}>
       <h2 className="text-2xl font-bold mb-4 text-center">Login</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <input
@@ -79,7 +81,7 @@ const LoginPage = () => {
         />
         <button
           type="submit"
-          className="w-full border text-black p-2  "
+          className="w-full border p-2  "
         >
           Login
         </button>
@@ -87,7 +89,7 @@ const LoginPage = () => {
         <div className="pt-2">
           <button
               onClick={() => router.push("/login/CreateAccount")}
-              className="w-full border text-black p-2"
+              className="w-full border p-2"
             >
             Create Account
           </button>
