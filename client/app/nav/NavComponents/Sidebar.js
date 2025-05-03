@@ -63,7 +63,6 @@ export default function Sidebar ({ isOpen, onClose }) {
             <li className="pl-4 font-bold">• Active</li>
             <li className="pl-6 text-gray-500">Inactive</li> */}
             {user?.email !== "Guest" && user?.name ? <li className="text-gray-600">Settings</li> : null}
-            <li className="text-gray-600">Settings</li>
             <li className="text-gray-600">Subscription</li>
             <li className="text-gray-600">Payments</li>
             <li className="text-gray-600">Privacy</li>

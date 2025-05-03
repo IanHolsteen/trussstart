@@ -5,6 +5,12 @@ class DesignerProfileSerializer < ActiveModel::Serializer
     object.specialties.pluck(:name)
   end
 
+  def as_json(options = {})
+    super(options).merge({
+      projects: object.portfolios.flat_map(&:projects)
+    })
+  end
+
   def photo_url
     return unless object.photo.attached?
 
