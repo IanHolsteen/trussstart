@@ -4,12 +4,14 @@ import { useState , useEffect } from 'react'
 import Image from 'next/image'
 import { MdCheck, MdClear } from "react-icons/md";
 import { useTheme } from "../contexts/ThemeProvider"
+import { UserProvider , useUser } from './contexts/UserProvider';
 
 export default function SwipeableProfiles({ profiles: initialProfiles, onWidenSearch, showWidenSearchButton, resetKey }) {
   const [profiles, setProfiles] = useState(initialProfiles)
   const [currentIndex, setCurrentIndex] = useState(0)
   const [matched, setMatched] = useState(false)
   const { theme } = useTheme();
+  const { user, setUser } = useUser();
 
   useEffect(() => {
     setCurrentIndex(0)
@@ -126,10 +128,20 @@ export default function SwipeableProfiles({ profiles: initialProfiles, onWidenSe
   {/* Scrollable container */}
   <div className="relative w-full h-[375px] overflow-hidden">
   {matched && (
-    <div className={`absolute inset-0 flex items-center justify-center bg-opacity-50 z-10 text-4xl ${theme === "light" ? "text-black" : "text-white"} transition-opacity duration-700`}>
-      It’s a Match!
-    </div>
-  )}
+  <div className={`absolute inset-0 flex items-center justify-center bg-opacity-50 z-10 text-center px-4 text-2xl md:text-4xl ${theme === "light" ? "text-black" : "text-white"} transition-opacity duration-700`}>
+    {user?.email === "Guest" || !user?.email ? (
+      <span>
+        You aren&#8217;t currently logged in.{" "}
+        <a href="/login" className="underline text-blue-400 hover:text-blue-600">
+          Make an account
+        </a>
+        .
+      </span>
+    ) : (
+      <span>It’s a Match!</span>
+    )}
+  </div>
+)}
   <div className={`overflow-y-auto h-full transition-opacity duration-700 ${matched ? 'opacity-0' : 'opacity-100'}`}>
     
 
