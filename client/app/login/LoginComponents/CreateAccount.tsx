@@ -19,7 +19,7 @@ const CreateAccountPage = () => {
   const [csrfToken, setCsrfToken] = useState("");
 
   useEffect(() => {
-    fetch("https://trussmade.com/api/csrf_token", {
+    fetch("https://www.trussmade.com/api/csrf_token", {
         method: "GET",
       credentials: "include",
     })
@@ -38,7 +38,7 @@ const CreateAccountPage = () => {
     setErrors([]);
 
     try {
-      const response = await fetch("https://trussmade.com/api/signup", {
+      const response = await fetch("https://www.trussmade.com/api/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
