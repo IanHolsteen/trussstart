@@ -4,11 +4,12 @@ import { useRouter } from "next/navigation";
 import { useState , useContext } from "react";
 import { Menu, X } from "lucide-react";
 import { useUser } from "../../contexts/UserProvider";
-
+import { useTheme } from "../../contexts/ThemeProvider"
 
 export default function Sidebar ({ isOpen, onClose }) {
 
   const { user, setUser } = useUser();
+  const { theme } = useTheme();
 
   const handleLogOut = (e) => {
     fetch(`/api/logout`,{
@@ -38,9 +39,9 @@ export default function Sidebar ({ isOpen, onClose }) {
   
         {/* Sidebar */}
         <div
-          className={`fixed top-0 left-0 h-full w-64 sm:w-80 bg-white z-20 shadow-lg p-4 transform ${
+          className={`fixed top-0 left-0 h-full w-64 sm:w-80 bg-gradient-to-b ${theme === "light" ? "from-[#FAFAFA] to-[#E5E3CC]" : "from-[#5FBB46] to-[#0A0A0A] from-[0%]"} z-20 shadow-lg p-4 transform ${
             isOpen ? "translate-x-0" : "-translate-x-full"
-          } transition-transform duration-300 ease-in-out`}
+          } transition-transform  duration-300 ease-in-out`}
         >
           {/* Close Button */}
           <button onClick={onClose} className="absolute top-4 right-4">
@@ -71,6 +72,7 @@ export default function Sidebar ({ isOpen, onClose }) {
             <button
               onClick={() => {
                 isGuest ? router.push("/login") : handleLogOut();
+                onClose;
               }}
               className="mt-4 w-full border text-black p-2 rounded-md"
             >

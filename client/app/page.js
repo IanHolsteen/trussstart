@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <div className={`min-h-screen flex flex-col justify-between 
       bg-gradient-to-b 
-        ${theme === "light" ? "from-[#FAFAFA] to-[#E5E3CC]" : "from-[#0A0A0A] to-[#5FBB46] from-[40%]"}`}>
+        ${theme === "light" ? "from-[#FAFAFA] to-[#E5E3CC]" : "from-[#0A0A0A] to-[#5FBB46] from-[70%]"}`}>
         <Navbar />
         <h1 className="px-8">
           {user?.email === "Guest" || !user?.email
