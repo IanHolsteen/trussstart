@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_04_24_133737) do
+ActiveRecord::Schema[7.1].define(version: 2025_05_03_035955) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -79,6 +79,15 @@ ActiveRecord::Schema[7.1].define(version: 2025_04_24_133737) do
     t.datetime "updated_at", null: false
     t.index ["receiver_id"], name: "index_conversations_on_receiver_id"
     t.index ["sender_id"], name: "index_conversations_on_sender_id"
+  end
+
+  create_table "designer_profile_specialties", force: :cascade do |t|
+    t.bigint "designer_profile_id", null: false
+    t.bigint "specialty_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["designer_profile_id"], name: "index_designer_profile_specialties_on_designer_profile_id"
+    t.index ["specialty_id"], name: "index_designer_profile_specialties_on_specialty_id"
   end
 
   create_table "designer_profiles", force: :cascade do |t|
@@ -171,6 +180,12 @@ ActiveRecord::Schema[7.1].define(version: 2025_04_24_133737) do
     t.index ["user_id"], name: "index_seeker_profiles_on_user_id"
   end
 
+  create_table "specialties", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "user_roles", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "role_name"
@@ -188,6 +203,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_04_24_133737) do
     t.integer "seeker_profile_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "interested_in_building_profile"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
@@ -198,6 +214,8 @@ ActiveRecord::Schema[7.1].define(version: 2025_04_24_133737) do
   add_foreign_key "connections", "users", column: "connected_user_id"
   add_foreign_key "conversations", "users", column: "receiver_id"
   add_foreign_key "conversations", "users", column: "sender_id"
+  add_foreign_key "designer_profile_specialties", "designer_profiles"
+  add_foreign_key "designer_profile_specialties", "specialties"
   add_foreign_key "designer_profiles", "users"
   add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "users"

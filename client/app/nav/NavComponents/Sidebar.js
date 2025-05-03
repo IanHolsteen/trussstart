@@ -54,13 +54,14 @@ export default function Sidebar ({ isOpen, onClose }) {
           <h1>
             {user?.email !== "Guest" && user?.name ? `Hello, ${user?.name}` : null}
           </h1>
-            <li className="text-gray-600 font-semibold">User Mode</li>
+            {/* <li className="text-gray-600 font-semibold">User Mode</li>
             <li className="pl-6 text-gray-500">Seeker</li>
             <li className="pl-6 text-gray-500">Designer</li>
             <li className="pl-6 text-gray-500">Business</li>
             <li className="pl-4 font-bold">Searching</li>
             <li className="pl-4 font-bold">• Active</li>
-            <li className="pl-6 text-gray-500">Inactive</li>
+            <li className="pl-6 text-gray-500">Inactive</li> */}
+            {user?.email !== "Guest" && user?.name ? <li className="text-gray-600">Settings</li> : null}
             <li className="text-gray-600">Settings</li>
             <li className="text-gray-600">Subscription</li>
             <li className="text-gray-600">Payments</li>

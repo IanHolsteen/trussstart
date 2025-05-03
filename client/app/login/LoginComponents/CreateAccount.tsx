@@ -14,6 +14,7 @@ const CreateAccountPage = () => {
     email: "",
     password: "",
     password_confirmation: "",
+    interested_in_building_profile: false,
   });
   const [errors, setErrors] = useState<string[]>([]);
   const [csrfToken, setCsrfToken] = useState("");
@@ -29,7 +30,8 @@ const CreateAccountPage = () => {
   }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    const { name, type, value, checked } = e.target;
+    setForm({ ...form, [name]: type === "checkbox" ? checked : value });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -50,6 +52,7 @@ const CreateAccountPage = () => {
             email: form.email,
             password: form.password,
             password_confirmation: form.password_confirmation,
+            interested_in_building_profile: form.interested_in_building_profile,
           }),          
       });
 
@@ -107,6 +110,19 @@ const CreateAccountPage = () => {
           className="w-full p-2 border"
           required
         />
+        <label className="flex items-center space-x-2">
+          <input
+            type="checkbox"
+            name="interested_in_building_profile"
+            checked={form.interested_in_building_profile}
+            onChange={handleChange}
+            className="form-checkbox"
+          />
+          <span className="text-sm">
+            I&#8217;m interested in building a full profile
+          </span>
+        </label>
+
         <button type="submit" className="w-full border text-black p-2">
           Create Account
         </button>
