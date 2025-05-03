@@ -71,7 +71,7 @@ export default function Sidebar ({ isOpen, onClose }) {
             <button
               onClick={() => {
                 isGuest ? router.push("/login") : handleLogOut();
-                onClose;
+                onClose();
               }}
               className="mt-4 w-full border text-black p-2 rounded-md"
             >
