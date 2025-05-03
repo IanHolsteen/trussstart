@@ -126,7 +126,7 @@ export default function SwipeableProfiles({ profiles: initialProfiles, onWidenSe
   {/* Scrollable container */}
   <div className="relative w-full h-[375px] overflow-hidden">
   {matched && (
-    <div className="absolute inset-0 flex items-center justify-center bg-opacity-50 z-10 text-4xl text-black transition-opacity duration-700">
+    <div className={`absolute inset-0 flex items-center justify-center bg-opacity-50 z-10 text-4xl ${theme === "light" ? "text-black" : "text-white"} transition-opacity duration-700`}>
       It’s a Match!
     </div>
   )}
