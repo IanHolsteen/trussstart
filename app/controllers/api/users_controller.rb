@@ -3,14 +3,6 @@ class Api::UsersController < ApplicationController
     skip_before_action :authorize, only: [:create, :guest]
     before_action :find_user, only: [:update, :destroy]
 
-    validates :email, presence: true, uniqueness: true, format: {
-        with: URI::MailTo::EMAIL_REGEXP,
-        message: "must be a valid email format"
-    }
-
-    validates :password, confirmation: true, length: { minimum: 6 }, if: -> { new_record? || !password.nil? }
-    validates :password_confirmation, presence: true, if: -> { new_record? || !password.nil? }
-
     def index
         render json: User.all
     end

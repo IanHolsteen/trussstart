@@ -16,9 +16,14 @@ class User < ApplicationRecord
     has_many :reviews_given, class_name: "Review", foreign_key: "reviewer_id"
     has_many :reviews_received, class_name: "Review", foreign_key: "reviewee_id"  
 
-    validates :email, presence: true
+    validates :email, presence: true, uniqueness: true, format: {
+        with: URI::MailTo::EMAIL_REGEXP,
+        message: "must be a valid email format"
+    }
 
-    validates :email, uniqueness: :true
+    validates :password, confirmation: true, length: { minimum: 6 }, if: -> { new_record? || !password.nil? }
+    validates :password_confirmation, presence: true, if: -> { new_record? || !password.nil? }
+    
 
     def all_projects
         if business_profile
