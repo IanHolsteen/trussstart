@@ -4,7 +4,7 @@ import { useState , useEffect } from 'react'
 import Image from 'next/image'
 import { MdCheck, MdClear } from "react-icons/md";
 import { useTheme } from "../contexts/ThemeProvider"
-import { UserProvider , useUser } from './contexts/UserProvider';
+import { UserProvider , useUser } from '../contexts/UserProvider';
 
 export default function SwipeableProfiles({ profiles: initialProfiles, onWidenSearch, showWidenSearchButton, resetKey }) {
   const [profiles, setProfiles] = useState(initialProfiles)
