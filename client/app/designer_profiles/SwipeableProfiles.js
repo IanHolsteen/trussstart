@@ -3,12 +3,13 @@
 import { useState , useEffect } from 'react'
 import Image from 'next/image'
 import { MdCheck, MdClear } from "react-icons/md";
+import { useTheme } from "../contexts/ThemeProvider"
 
 export default function SwipeableProfiles({ profiles: initialProfiles, onWidenSearch, showWidenSearchButton, resetKey }) {
   const [profiles, setProfiles] = useState(initialProfiles)
   const [currentIndex, setCurrentIndex] = useState(0)
   const [matched, setMatched] = useState(false)
-
+  const { theme } = useTheme();
 
   useEffect(() => {
     setCurrentIndex(0)
@@ -64,12 +65,11 @@ export default function SwipeableProfiles({ profiles: initialProfiles, onWidenSe
 
   return (
     <div className="flex flex-col items-center justify-between p-6">
-      <div className="w-full max-w-sm mx-auto bg-[#f5f0e6] border border-black overflow-hidden">
-
+      <div className={`w-full max-w-sm mx-auto ${theme === "light" ? "bg-[#f5f0e6] text-black" : "bg-black text-white"} border  overflow-hidden`}>
         {/* Profile Header */}
-        <div className="flex border-b border-black text-sm bg-[#f5f0e6]">
+        <div className="flex border-b text-sm">
           {/* Left: Profile Photo */}
-          <div className="border-r border-black flex items-center justify-center w-20">
+          <div className="border-r flex items-center justify-center w-20">
             <div className="relative">
             <div className="relative w-18 h-18 rounded-full overflow-hidden">
               <Image
@@ -92,7 +92,7 @@ export default function SwipeableProfiles({ profiles: initialProfiles, onWidenSe
 
           {/* Middle: Text Info */}
           
-          <div className={`flex-1 border-r border-black `}>
+          <div className={`flex-1 border-r `}>
             <div className="border-b px-1">
               <div className="flex space-x-1 text-sm">
                 {[...Array(5)].map((_, i) => (
@@ -103,7 +103,7 @@ export default function SwipeableProfiles({ profiles: initialProfiles, onWidenSe
             </div>
             <div className="px-1 ">
               <div className="text-xs">Licensed Architect</div>
-              <div className="text-xs text-gray-700">{current.location}</div>
+              <div className="text-xs">{current.location}</div>
               <div className="text-base text-xs">
                 {[...Array(5)].map((_, i) => (
                   <span key={i} className={i < current.price_range ? "" : "text-gray-400"}>
@@ -145,7 +145,7 @@ export default function SwipeableProfiles({ profiles: initialProfiles, onWidenSe
     </div>
 
     {/* Identity Tags */}
-    <div className="px-4 py-2 border-t border-black flex justify-between flex-wrap gap-2 text-xs font-medium">
+    <div className="px-4 py-2 border-t flex justify-between flex-wrap gap-2 text-xs font-medium">
       <div>👍 6+ Liked Project</div>
       {current.lgbtq_owned && <div>🌈 LGBTQ+ Owned</div>}
       {current.fluent_in_spanish && <div>🗣️ Fluent in Spanish</div>}

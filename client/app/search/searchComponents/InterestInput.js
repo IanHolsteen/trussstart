@@ -13,7 +13,7 @@ export default function InterestInput ({ handleSearch }) {
   };
 
     return (
-      <div className=" border-t flex items-stretch text-black">
+      <div className={`border-t flex items-stretch ${theme === "light" ? "text-black" : "text-[#5FBB46]"}`}>
         <div className="flex-[3] p-2 items-center">
           <div><span>Keywords (separate by comma):</span></div>
             <div><input 
