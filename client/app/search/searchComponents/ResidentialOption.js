@@ -7,7 +7,7 @@ export default function ResidentialOption () {
                   type="checkbox"
                   className="peer appearance-none w-4 h-4 border-1 checked:bg-blue-700"
                 />
-                <span className="pointer-events-none absolute inset-0 flex items-center justify-center text-black text-xl peer-checked:opacity-100 opacity-0">
+                <span className="pointer-events-none absolute inset-0 flex items-center justify-center text-xl peer-checked:opacity-100 opacity-0">
                   ✔
                 </span>
               </span>
@@ -19,7 +19,7 @@ export default function ResidentialOption () {
                   type="checkbox"
                   className="peer appearance-none w-4 h-4 border-1 checked:bg-blue-700"
                 />
-                <span className="pointer-events-none absolute inset-0 flex items-center justify-center text-black text-xl peer-checked:opacity-100 opacity-0">
+                <span className="pointer-events-none absolute inset-0 flex items-center justify-center text-xl peer-checked:opacity-100 opacity-0">
                   ✔
                 </span>
               </span>
@@ -31,7 +31,7 @@ export default function ResidentialOption () {
                   type="checkbox"
                   className="peer appearance-none w-4 h-4 border-1 checked:bg-blue-700"
                 />
-                <span className="pointer-events-none absolute inset-0 flex items-center justify-center text-black text-xl peer-checked:opacity-100 opacity-0">
+                <span className="pointer-events-none absolute inset-0 flex items-center justify-center text-xl peer-checked:opacity-100 opacity-0">
                   ✔
                 </span>
               </span>
@@ -43,7 +43,7 @@ export default function ResidentialOption () {
                   type="checkbox"
                   className="peer appearance-none w-4 h-4 border-1 checked:bg-blue-700"
                 />
-                <span className="pointer-events-none absolute inset-0 flex items-center justify-center text-black text-xl peer-checked:opacity-100 opacity-0">
+                <span className="pointer-events-none absolute inset-0 flex items-center justify-center text-xl peer-checked:opacity-100 opacity-0">
                   ✔
                 </span>
               </span>
@@ -55,7 +55,7 @@ export default function ResidentialOption () {
                   type="checkbox"
                   className="peer appearance-none w-4 h-4 border-1 checked:bg-blue-700"
                 />
-                <span className="pointer-events-none absolute inset-0 flex items-center justify-center text-black text-xl peer-checked:opacity-100 opacity-0">
+                <span className="pointer-events-none absolute inset-0 flex items-center justify-center text-xl peer-checked:opacity-100 opacity-0">
                   ✔
                 </span>
               </span>
@@ -67,7 +67,7 @@ export default function ResidentialOption () {
                   type="checkbox"
                   className="peer appearance-none w-4 h-4 border-1 checked:bg-blue-700"
                 />
-                <span className="pointer-events-none absolute inset-0 flex items-center justify-center text-black text-xl peer-checked:opacity-100 opacity-0">
+                <span className="pointer-events-none absolute inset-0 flex items-center justify-center text-xl peer-checked:opacity-100 opacity-0">
                   ✔
                 </span>
               </span>
