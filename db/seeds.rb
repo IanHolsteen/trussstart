@@ -164,27 +164,123 @@ designer3 = DesignerProfile.create!(
   fluent_in_spanish: false
 )
 
+photo_path = Rails.root.join("public/images/JamesProfile.jpg")
+cover_path = Rails.root.join("public/images/michael2.jpg")
+raise "Missing photo" unless File.exist?(photo_path)
+raise "Missing cover" unless File.exist?(cover_path)
 
 designer3.photo.attach(
   io: File.open(photo_path),
-  filename: "michaelProfile.jpeg",
+  filename: "JamesProfile.jpg",
   content_type: "image/jpeg"
 )
 
 designer3.cover_photo.attach(
   io: File.open(cover_path),
-  filename: "michael1.jpg",
+  filename: "michael2.jpg",
   content_type: "image/jpeg"
 )
 
-puts "Attached designer3 images"
+puts "Updated designer3 (James) images"
 
 designer3.specialties << Specialty.find_by(name: "sustainability")
 designer3.specialties << Specialty.find_by(name: "green buildings")
 designer3.specialties << Specialty.find_by(name: "wood")
 designer3.save!
 
+user4 = User.create!(name: "Andre Davis", email: "andre@test.com", password: "andre")
+user5 = User.create!(name: "Jamie Stone", email: "jamie@test.com", password: "jamie")
+user6 = User.create!(name: "Hamil Grant", email: "hamil@test.com", password: "hamil")
 
+# Designer Profile for Andre
+designer4 = DesignerProfile.create!(
+  user: user4,
+  name: user4.name,
+  location: "Chicago",
+  language: "English",
+  bio: Faker::Lorem.paragraph,
+  price_range: 3,
+  lgbtq_owned: false,
+  minority_owned: true,
+  fluent_in_spanish: true
+)
+
+designer4.photo.attach(
+  io: File.open(Rails.root.join("public/images/AndreProfile.jpg")),
+  filename: "AndreProfile.jpg",
+  content_type: "image/jpeg"
+)
+
+designer4.cover_photo.attach(
+  io: File.open(Rails.root.join("public/images/carla2.jpg")),
+  filename: "carla2.jpg",
+  content_type: "image/jpeg"
+)
+
+designer4.specialties << Specialty.find_by(name: "brick")
+designer4.specialties << Specialty.find_by(name: "steel")
+designer4.specialties << Specialty.find_by(name: "craftsman")
+designer4.save!
+
+# Designer Profile for Jamie
+designer5 = DesignerProfile.create!(
+  user: user5,
+  name: user5.name,
+  location: "Austin",
+  language: "English",
+  bio: Faker::Lorem.paragraph,
+  price_range: 5,
+  lgbtq_owned: true,
+  minority_owned: false,
+  fluent_in_spanish: false
+)
+
+designer5.photo.attach(
+  io: File.open(Rails.root.join("public/images/JamieProfile.jpg")),
+  filename: "JamieProfile.jpg",
+  content_type: "image/jpeg"
+)
+
+designer5.cover_photo.attach(
+  io: File.open(Rails.root.join("public/images/carla3.jpg")),
+  filename: "carla3.jpg",
+  content_type: "image/jpeg"
+)
+
+designer5.specialties << Specialty.find_by(name: "custom furniture")
+designer5.specialties << Specialty.find_by(name: "stone")
+designer5.specialties << Specialty.find_by(name: "historical homes")
+designer5.save!
+
+# Designer Profile for Hamil
+designer6 = DesignerProfile.create!(
+  user: user6,
+  name: user6.name,
+  location: "Seattle",
+  language: "English, Spanish",
+  bio: Faker::Lorem.paragraph,
+  price_range: 1,
+  lgbtq_owned: false,
+  minority_owned: false,
+  fluent_in_spanish: true
+)
+
+designer6.photo.attach(
+  io: File.open(Rails.root.join("public/images/HamilProfile.jpg")),
+  filename: "HamilProfile.jpg",
+  content_type: "image/jpeg"
+)
+
+designer6.cover_photo.attach(
+  io: File.open(Rails.root.join("public/images/michael3.jpg")),
+  filename: "michael3.jpg",
+  content_type: "image/jpeg"
+)
+
+designer6.specialties << Specialty.find_by(name: "masonry")
+designer6.specialties << Specialty.find_by(name: "eco friendly")
+designer6.specialties << Specialty.find_by(name: "wood")
+designer6.save!
 
 # Create Business Profile
 
