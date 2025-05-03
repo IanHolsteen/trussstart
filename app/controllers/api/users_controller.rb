@@ -22,24 +22,36 @@ class Api::UsersController < ApplicationController
 
     def guest
         return if session[:user_id]
-        @guest = User.new(:email => "Guest")
-        @guest.save(validate: false)
+      
+        @guest = User.create!(
+          name: "Guest",
+          email: "guest_#{SecureRandom.hex(4)}@example.com",
+          password: SecureRandom.hex(8),
+          password_confirmation: SecureRandom.hex(8),
+          validate: false
+        )
+      
         session[:user_id] = @guest.id
-        carts = @guest.carts.create!
-    end
-
-    def create
+        @guest.carts.create!
+      end
+      
+      def create
         user = User.create!(user_params)
-        guest_user = User.where(email: "Guest").order(created_at: :desc).first
+      
+        # Transfer carts from most recent guest user
+        guest_user = User.where("email LIKE ?", "guest_%@example.com").order(created_at: :desc).first
         if guest_user
-            guest_user.carts.each do |cart|
-                cart.update!(user_id: user.id)
-            end
-            guest_user.destroy
+          guest_user.carts.update_all(user_id: user.id)
+          guest_user.destroy
         end
+      
+        # Clean up any remaining guest users (optional)
+        User.where("email LIKE ?", "guest_%@example.com").where.not(id: user.id).destroy_all
+      
         session[:user_id] = user.id
         render json: user, status: :created
-    end
+      end
+      
 
 
     def update

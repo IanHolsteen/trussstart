@@ -45,29 +45,42 @@ puts "Specialties have been seeded."
 
 # Create Users
 
+# Create Users
 testUser = User.create!(
   name: 'Ian',
   email: 'ian@ian.com',
-  password: 'ian'
+  password: 'ian',
+  password_confirmation: 'ian'
 )
 
 user1 = User.create!(
   name: "Maria Lopez",
   email: "maria@test.com",
-  password: "maria"
+  password: "maria",
+  password_confirmation: "maria"
 )
 
 user2 = User.create!(
   name: "Michael Rios",
   email: "michael@test.com",
-  password: "michael"
+  password: "michael",
+  password_confirmation: "michael"
 )
 
 user3 = User.create!(
   name: "James Jameson",
   email: "james@test.com",
-  password: "james"
+  password: "james",
+  password_confirmation: "james"
 )
+
+testUser2 = User.create!(
+  name: "Test User",
+  email: "testuser@test.com",
+  password: "password",
+  password_confirmation: "password"
+)
+
 
 
 # Create Designer Profile
@@ -188,9 +201,27 @@ designer3.specialties << Specialty.find_by(name: "green buildings")
 designer3.specialties << Specialty.find_by(name: "wood")
 designer3.save!
 
-user4 = User.create!(name: "Andre Davis", email: "andre@test.com", password: "andre")
-user5 = User.create!(name: "Jamie Stone", email: "jamie@test.com", password: "jamie")
-user6 = User.create!(name: "Hamil Grant", email: "hamil@test.com", password: "hamil")
+user4 = User.create!(
+  name: "Andre Smith",
+  email: "andre@test.com",
+  password: "andre",
+  password_confirmation: "andre"
+)
+
+user5 = User.create!(
+  name: "Jamie Bennett",
+  email: "jamie@test.com",
+  password: "jamie",
+  password_confirmation: "jamie"
+)
+
+user6 = User.create!(
+  name: "Hamil Grace",
+  email: "hamil@test.com",
+  password: "hamil",
+  password_confirmation: "hamil"
+)
+
 
 # Designer Profile for Andre
 designer4 = DesignerProfile.create!(
